@@ -1,0 +1,5 @@
+image:
+  name: gcr.io/gcp-architecting/k8s-demo-app
+  tag: latest
+
+replicaCount: 2

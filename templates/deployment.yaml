@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo-app
+  labels:
+    app: k8s-demo-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: k8s-demo-app
+  template:
+    metadata:
+      labels:
+        app: k8s-demo-app
+    spec:
+      containers:
+      - name: k8s-demo-app
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: VERSION
+          value: {{ .Values.image.tag }}
